@@ -11,7 +11,7 @@
     <div class="article">
         <p class="universe starColor">ДЗ 6. Функции и методы массивов</p>
         <div class="grid">
-            <button class="myButton" onclick="empty()">1.Заполнить массив</button>
+            <button class="myButton" onclick="getResult()">1.Заполнить массив</button>
             <button class="myButton" onclick="empty()">2.Фильтрация массива</button>
             <button class="myButton" onclick="empty()">3.Сумма всех входящих параметров функции</button>
             <button class="myButton" onclick="empty()">4.Декорация текста</button>
@@ -20,7 +20,21 @@
     </div>
 
     <script>
+        function getResult(){
+            let array = fillArray(10, 'qwerty');
+            console.log(array);
+        }   
+
+        function fillArray(count, value){
+            let result=[];
+            for(let i=0;i<count;i++){
+                result[i]=value;
+            }
+            return result;
+        }
+
         
+     
     </script>
 </body>
 </html>
