@@ -12,20 +12,16 @@
         <p class="universe starColor">ДЗ 6. Функции и методы массивов</p>
         <div class="grid">
             <button class="myButton" onclick="getResult()">1.Заполнить массив</button>
-            <button class="myButton" onclick="empty()">2.Фильтрация массива</button>
-            <button class="myButton" onclick="empty()">3.Сумма всех входящих параметров функции</button>
-            <button class="myButton" onclick="empty()">4.Декорация текста</button>
-            <button class="myButton" onclick="empty()">5.Двойной вызов функции</button>
+            <button class="myButton" onclick="getFilter()">2.Фильтрация массива</button>
+            <button class="myButton" onclick="getSum()">3.Сумма всех входящих параметров функции</button>
+            <button class="myButton" onclick="getCreatePipe()">4.Декорация текста</button>
+            <button class="myButton" onclick="getTwoOptions()">5.Двойной вызов функции</button>
         </div>
     </div>
 
     <script>
         function getResult(){
-            let array = fillArray(10, 'qwerty');
-            console.log(array);
-        }   
-
-        function fillArray(count, value){
+            function fillArray(count, value){
             let result=[];
             for(let i=0;i<count;i++){
                 result[i]=value;
@@ -33,8 +29,73 @@
             return result;
         }
 
-        
-     
+            let array = fillArray(10, 'qwerty');
+            console.log(array);
+        }   
+
+      
+
+        function getFilter(){
+            function filterArray(array,...restArgs){
+            let array1 = array;
+            let forDeletion = restArgs;
+            array1 = array1.filter(item => !forDeletion.includes(item))
+            console.log(array1);
+        }   
+            let array = [0, 1, 2, null, undefined, 'qwerty', false];
+            let result = filterArray(array, false, undefined, '', 0, null); 
+            
+        }
+
+    function getSum(){
+            function calcSum(...args){
+                let sum = 0;
+                for (let arg of args)
+                    sum += arg;
+                    return sum;
+            }
+            let sum1 = calcSum(0); // 0
+            let sum2 = calcSum(1,2,3); // 6
+            let sum3 = calcSum(5,0,10, 1, 5); // 21
+            console.log(sum1);
+            console.log(sum2);
+            console.log(sum3);
+        }
+
+       
+        function getCreatePipe(){
+            function createPipe() {
+            const leftDecoration = `===== '`;
+            const rightDecoration =`' =====`;
+                return function(inputArgument) {
+                    console.log(leftDecoration+inputArgument+rightDecoration);
+                }
+            }
+
+            const pipeFunction = createPipe();
+            pipeFunction('some text you like');
+        }
+
+        function getTwoOptions(){
+            const outputConsole=(input)=>{
+                console.log(input);
+            };
+            const outputAlert=(input)=>{
+                alert(input);
+            };
+
+            function message(input,flag,func1,func2){
+                if(flag=='console'){
+                    func1(input);
+                }
+                else{
+                    func2(input);
+                }
+            }
+            message('sometext','console',outputConsole,outputAlert);
+            message('sometext','alert',outputConsole,outputAlert);
+        }
+    
     </script>
 </body>
 </html>
