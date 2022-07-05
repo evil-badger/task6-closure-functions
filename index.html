@@ -9,107 +9,17 @@
 </head>
 <body>
     <div class="article">
-        <p class="universe starColor">ДЗ 6. Функции и методы массивов</p>
+        <p class="universe starColor">ДЗ 8. Область видимости. Контекст выполнения. this</p>
         <div class="grid">
-            <button class="myButton" onclick="getResult()">1.Заполнить массив</button>
-            <button class="myButton" onclick="getFilter()">2.Фильтрация массива</button>
-            <button class="myButton" onclick="getSum()">3.Сумма всех входящих параметров функции</button>
-            <button class="myButton" onclick="getCreatePipe()">4.Декорация текста</button>
-            <button class="myButton" onclick="getTwoOptions()">5.Двойной вызов функции</button>
-            <button class="myButton" onclick="test()">тест</button>
+            <button class="myButton" onclick="test()">1.Обьект Треугольник, результат свойств обьекта</button>
+            <button class="myButton" onclick="test()">2.Фильтрация массива</button>
+            <button class="myButton" onclick="test()">3.Сумма всех входящих параметров функции</button>
+            <button class="myButton" onclick="test()">4.Тест фрагмента кода</button>
         </div>
     </div>
 
     <script>
-        function test(){
-            const dec = createDec(2);
-            console.log(dec);
-            dec('Name'); // Hello Name
         
-            function createDec(count) {
-                return function(name) {
-                    console.log(count+' hello '+name);
-                };
-            }
-
-        }
-        
-        function getResult(){
-            let array = fillArray(10, 'qwerty');
-            console.log(array);
-
-            function fillArray(count, value){
-                let arr=[...Array(count)];//такое обьявление вернет правильное значение
-                //let arr=new Array(count); //такое обьявление вернет пустой массив
-                const newArr = arr.map(el=>value);
-                return newArr;
-            }
-           
-        }   
-
-      
-
-        function getFilter(){
-            function filterArray(array,...restArgs){
-            let array1 = array;
-            let forDeletion = restArgs;
-            array1 = array1.filter(item => !forDeletion.includes(item))
-            console.log(array1);
-        }   
-            let array = [0, 1, 2, null, undefined, 'qwerty', false];
-            let result = filterArray(array, false, undefined, '', 0, null); 
-            
-        }
-
-    function getSum(){
-            function calcSum(...args){
-                let sum = 0;
-                for (let arg of args)
-                    sum += arg;
-                    return sum;
-            }
-            let sum1 = calcSum(0); // 0
-            let sum2 = calcSum(1,2,3); // 6
-            let sum3 = calcSum(5,0,10, 1, 5); // 21
-            console.log(sum1);
-            console.log(sum2);
-            console.log(sum3);
-        }
-
-       
-        function getCreatePipe(){
-            function createPipe() {
-            const leftDecoration = `===== '`;
-            const rightDecoration =`' =====`;
-                return function(inputArgument) {
-                    console.log(leftDecoration+inputArgument+rightDecoration);
-                }
-            }
-
-            const pipeFunction = createPipe();
-            pipeFunction('some text you like');
-        }
-
-        function getTwoOptions(){
-            const outputConsole=(input)=>{
-                console.log(input);
-            };
-            const outputAlert=(input)=>{
-                alert(input);
-            };
-
-            function message(input,flag,func1,func2){
-                if(flag=='console'){
-                    func1(input);
-                }
-                else{
-                    func2(input);
-                }
-            }
-            message('sometext','console',outputConsole,outputAlert);
-            message('sometext','alert',outputConsole,outputAlert);
-        }
-    
     </script>
 </body>
 </html>
