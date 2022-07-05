@@ -16,21 +16,35 @@
             <button class="myButton" onclick="getSum()">3.Сумма всех входящих параметров функции</button>
             <button class="myButton" onclick="getCreatePipe()">4.Декорация текста</button>
             <button class="myButton" onclick="getTwoOptions()">5.Двойной вызов функции</button>
+            <button class="myButton" onclick="test()">тест</button>
         </div>
     </div>
 
     <script>
-        function getResult(){
-            function fillArray(count, value){
-            let result=[];
-            for(let i=0;i<count;i++){
-                result[i]=value;
+        function test(){
+            const dec = createDec(2);
+            console.log(dec);
+            dec('Name'); // Hello Name
+        
+            function createDec(count) {
+                return function(name) {
+                    console.log(count+' hello '+name);
+                };
             }
-            return result;
-        }
 
+        }
+        
+        function getResult(){
             let array = fillArray(10, 'qwerty');
             console.log(array);
+
+            function fillArray(count, value){
+                let arr=[...Array(count)];//такое обьявление вернет правильное значение
+                //let arr=new Array(count); //такое обьявление вернет пустой массив
+                const newArr = arr.map(el=>value);
+                return newArr;
+            }
+           
         }   
 
       
